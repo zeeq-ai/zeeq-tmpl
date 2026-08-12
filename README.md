@@ -1,0 +1,10 @@
+# An AI enabled, agent-friendly application template
+
+This template is an AI-enabled, agent-friendly application template using .NET 10, C# 15, Vue 3.5, Nuxt UI, and the GitHub Copilot SDK to build an agentic foundation.
+
+See the blog posts here:
+
+- <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-1/>
+- <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/>
+- <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/>
+- <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/>
