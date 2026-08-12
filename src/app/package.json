@@ -7,20 +7,28 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src",
-    "typecheck": "vue-tsc -p ./tsconfig.app.json"
+    "typecheck": "vue-tsc -p ./tsconfig.app.json",
+    "generate": "kubb generate",
+    "generate:watch": "kubb generate --watch"
   },
   "dependencies": {
+    "@comark/vue": "^0.6.2",
     "@nuxt/ui": "^4.10.0",
     "@unhead/vue": "^2.1.17",
     "@vueuse/core": "^14.4.0",
+    "shiki": "^4.4.3",
     "tailwindcss": "^4.3.3",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
+    "@kubb/plugin-fetch": "5.0.0-beta.103",
+    "@kubb/plugin-ts": "5.0.0-beta.103",
     "@vitejs/plugin-vue": "^6.0.8",
     "eslint": "^10.8.1",
     "eslint-plugin-vue": "^10.10.0",
+    "kubb": "5.0.0-beta.103",
+    "prettier": "^3.9.6",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.66.0",
     "vite": "^7.3.6",

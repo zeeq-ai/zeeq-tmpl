@@ -16,6 +16,15 @@ var frontend = builder
     .WithEndpoint(name: "http", port: 7321, scheme: "http")
     .WaitFor(backend);
 
+var kubb = builder
+    .AddExecutable(
+        name: "kubb-generate-watch",
+        command: "pnpm",
+        workingDirectory: "../src/app",
+        args: ["generate:watch"]
+    )
+    .WaitFor(frontend);
+
 builder.Build().Run();
 
 string ResolveCSharpReplHook()
