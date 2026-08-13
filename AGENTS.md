@@ -3,6 +3,11 @@
 - `src/server`: .NET 10, C# 14; use modern language features (primary constructors, deconstruction, pattern matching, switch expressions, named tuple types, etc.)
 - `src/app`: Vue 3, Nuxt UI, Vite, TypeScript, Tailwind CSS
 
+## Skills
+
+- Use the skill `unit-integration-testing` when writing and running .NET C# tests
+- Use the skill `csharprepl` to directly manipulate the running C# application, wrap methods, replace methods, and inspect the runtime state of the application
+
 ## Tooling
 
 ### Nuxt UI Rules
@@ -27,6 +32,15 @@ aspire ps
 
 # Avoid restarting the full stack; just rebuild the server
 aspire resource app-backend rebuild
+
+# Get local dev database connection for psql
+aspire describe postgres --apphost ./host --format json | \
+  jq -r '.resources[0] | {
+  port: (.urls[0].url | split(":")[-1]),
+  username: .environment.POSTGRES_USER,
+  password: .environment.POSTGRES_PASSWORD,
+  db: (.environment.POSTGRES_DB // .environment.POSTGRES_USER)
+}'
 ```
 
 ### Playwright MCP

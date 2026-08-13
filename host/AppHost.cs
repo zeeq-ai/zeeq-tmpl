@@ -2,13 +2,21 @@ using System.Diagnostics;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+var username = builder.AddParameter("username", "zeeq", secret: true);
+var password = builder.AddParameter("password", "P@ssw0rd", secret: true);
+var postgres = builder
+    .AddPostgres("postgres", userName: username, password: password)
+    .AddDatabase("zeeq");
+
 var csrHook = ResolveCSharpReplHook(); // 👈 Extract the local hook path
 
 var backend = builder
     .AddProject<Projects.server>("app-backend")
     // 👇 Wire up CSharpRepl environment variables to the runtime.
     .WithEnvironment("DOTNET_STARTUP_HOOKS", csrHook)
-    .WithEnvironment("ASPNETCORE_HOSTINGSTARTUPASSEMBLIES", "CSharpRepl.InjectedHook");
+    .WithEnvironment("ASPNETCORE_HOSTINGSTARTUPASSEMBLIES", "CSharpRepl.InjectedHook")
+    // 👇 Connect the postgres instance
+    .WithReference(postgres);
 
 var frontend = builder
     .AddViteApp(name: "app-frontend", appDirectory: "../src/app")

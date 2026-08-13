@@ -1,4 +1,5 @@
 using System.Threading.Channels;
+using Microsoft.EntityFrameworkCore;
 using Zeeq.Tmpl;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,18 @@ builder
     .Services.AddKeyedSingleton("inbound", (sp, key) => Channel.CreateUnbounded<string>())
     .AddKeyedSingleton("outbound", (sp, key) => Channel.CreateUnbounded<string>())
     .AddHostedService<AgentServiceWorker>();
+
+// 👇 This will be injected by Aspire when we connect the resources
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__zeeq");
+
+// Set up the database context
+builder.Services.AddDbContext<ZeeqContext>(options =>
+    options
+        .UseNpgsql(connectionString)
+        .EnableDetailedErrors(true)
+        .EnableSensitiveDataLogging(true)
+        .UseSnakeCaseNamingConvention()
+);
 
 var app = builder.Build();
 

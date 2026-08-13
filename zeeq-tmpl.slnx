@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/server/server.csproj" />
+    <Project Path="src/tests/tests.csproj" />
   </Folder>
   <Project Path="host/host.csproj" />
 </Solution>
