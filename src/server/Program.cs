@@ -1,5 +1,12 @@
 using System.Threading.Channels;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
+using OpenTelemetry;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using Serilog;
+using Serilog.Events;
 using Zeeq.Tmpl;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +21,23 @@ builder
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())
 );
+
+// Setup logging
+var attributes = new Dictionary<string, object> { ["service"] = "zeeq" };
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console(
+        outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}] {Message:lj} ({Here}){NewLine}{Exception}"
+    )
+    .WriteTo.OpenTelemetry(options =>
+    {
+        options.ResourceAttributes = attributes;
+    })
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+    .CreateLogger();
+
+builder.Services.AddSerilog();
 
 // Wire up endpoints into the DI container
 builder
@@ -46,6 +70,31 @@ builder.Services.AddDbContext<ZeeqContext>(options =>
         .UseSnakeCaseNamingConvention()
 );
 
+// Setup telemetry
+builder
+    .Services.AddOpenTelemetry()
+    .ConfigureResource(res => res.AddService("zeeq").AddAttributes(attributes))
+    .WithTracing(builder =>
+    {
+        builder
+            .AddSource(ZeeqTelemetry.ActivitySourceName)
+            .AddAspNetCoreInstrumentation(config =>
+            {
+                config.RecordException = true;
+            })
+            .AddHttpClientInstrumentation()
+            .AddEntityFrameworkCoreInstrumentation();
+    })
+    .WithMetrics(builder =>
+        builder
+            .AddMeter("*")
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddNpgsqlInstrumentation()
+    )
+    .WithLogging()
+    .UseOtlpExporter();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -54,6 +103,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors();
+app.UseSerilogRequestLogging();
 
 // Connect the endpoints
 var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
