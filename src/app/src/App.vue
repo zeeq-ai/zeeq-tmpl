@@ -16,53 +16,55 @@ useHead({
 <template>
   <Suspense>
     <UApp>
-      <UHeader>
-        <template #left>
-          <RouterLink to="/">
-            <AppLogo class="w-auto h-6 shrink-0" />
-          </RouterLink>
+      <div class="flex h-screen flex-col">
+        <UHeader>
+          <template #left>
+            <RouterLink to="/">
+              <AppLogo class="w-auto h-6 shrink-0" />
+            </RouterLink>
 
-          <TemplateMenu />
-        </template>
+            <TemplateMenu />
+          </template>
 
-        <template #right>
-          <UColorModeButton />
+          <template #right>
+            <UColorModeButton />
 
-          <UButton
-            to="https://github.com/nuxt-ui-templates/starter-vue"
-            target="_blank"
-            icon="simple-icons:github"
-            aria-label="GitHub"
-            color="neutral"
-            variant="ghost"
-          />
-        </template>
-      </UHeader>
+            <UButton
+              to="https://github.com/nuxt-ui-templates/starter-vue"
+              target="_blank"
+              icon="simple-icons:github"
+              aria-label="GitHub"
+              color="neutral"
+              variant="ghost"
+            />
+          </template>
+        </UHeader>
 
-      <UMain>
-        <RouterView />
-      </UMain>
+        <UMain :ui="{ base: 'flex-1 min-h-0 overflow-y-auto' }">
+          <RouterView />
+        </UMain>
 
-      <USeparator icon="simple-icons:vuedotjs" />
+        <USeparator icon="simple-icons:vuedotjs" />
 
-      <UFooter>
-        <template #left>
-          <p class="text-sm text-muted">
-            Built with Nuxt UI • © {{ new Date().getFullYear() }}
-          </p>
-        </template>
+        <UFooter>
+          <template #left>
+            <p class="text-sm text-muted">
+              Built with Nuxt UI • © {{ new Date().getFullYear() }}
+            </p>
+          </template>
 
-        <template #right>
-          <UButton
-            to="https://github.com/nuxt-ui-templates/starter-vue"
-            target="_blank"
-            icon="simple-icons:github"
-            aria-label="GitHub"
-            color="neutral"
-            variant="ghost"
-          />
-        </template>
-      </UFooter>
+          <template #right>
+            <UButton
+              to="https://github.com/nuxt-ui-templates/starter-vue"
+              target="_blank"
+              icon="simple-icons:github"
+              aria-label="GitHub"
+              color="neutral"
+              variant="ghost"
+            />
+          </template>
+        </UFooter>
+      </div>
     </UApp>
   </Suspense>
 </template>

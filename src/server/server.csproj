@@ -5,9 +5,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Zeeq.Tmpl</RootNamespace>
     <UserSecretsId>db43be79-6f94-4d75-9ee0-45d496cfae4d</UserSecretsId>
+    <!-- OpenAPI config -->
+    <OpenApiDocumentsDirectory>..\app\src\api</OpenApiDocumentsDirectory>
+    <OpenApiGenerateDocumentsOptions>--file-name zeeq-tmpl-api</OpenApiGenerateDocumentsOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <!-- Suppress OpenAPI document generation in Release; the target checks this property -->
+    <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="GitHub.Copilot.SDK" Version="1.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="10.0.11">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Scrutor" Version="7.0.0" />
   </ItemGroup>
 </Project>

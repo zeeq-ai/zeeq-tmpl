@@ -1,3 +1,4 @@
+using System.Threading.Channels;
 using Zeeq.Tmpl;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,11 @@ builder
     .Services.AddOptions<AppSettings>()
     .Bind(builder.Configuration.GetSection(nameof(AppSettings)))
     .ValidateOnStart();
+
+// Allow the Vite dev server to call this API cross-origin; its actual port varies per run behind the Aspire proxy.
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())
+);
 
 // Wire up endpoints into the DI container
 builder
@@ -21,12 +27,20 @@ builder
             .WithTransientLifetime()
     );
 
+// Add the channels; keyed for inbound and outbound.
+builder
+    .Services.AddKeyedSingleton("inbound", (sp, key) => Channel.CreateUnbounded<string>())
+    .AddKeyedSingleton("outbound", (sp, key) => Channel.CreateUnbounded<string>())
+    .AddHostedService<AgentServiceWorker>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCors();
 
 // Connect the endpoints
 var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
