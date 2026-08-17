@@ -6,7 +6,8 @@
 ## Skills
 
 - Use the skill `unit-integration-testing` when writing and running .NET C# tests
-- Use the skill `csharprepl` to directly manipulate the running C# application, wrap methods, replace methods, and inspect the runtime state of the application
+- Use the skill `csharprepl` to directly manipulate the running C# application, wrap methods, replace methods, and inspect the runtime state of the application; experiment rapidly without rebuilding the runtime
+- Use the skill `aspire-tracing` when working with Aspire to access telemetry and source location as well as best practices for instrumenting the application with OpenTelemetry and logs.
 
 ## Tooling
 
