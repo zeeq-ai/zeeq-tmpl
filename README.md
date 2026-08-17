@@ -2,7 +2,7 @@
 
 This template is an AI-enabled, agent-friendly application template using .NET 10, C# 15, Vue 3.5, Nuxt UI, and the GitHub Copilot SDK to build an agentic foundation.
 
-[![Video walkthrough of the build out](https://github.com/user-attachments/assets/643b2766-a7bf-4f27-be28-21ab1f3c4041)](https://youtu.be/S3NNgr1wMVI)
+[![Video walkthrough of the build out](https://github.com/user-attachments/assets/7a08b411-f0cd-4170-81be-7d2dc1925904)](https://youtu.be/S3NNgr1wMVI)
 
 See the blog posts here:
 
