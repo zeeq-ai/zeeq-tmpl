@@ -1,0 +1,60 @@
+- generic [ref=f11e1]:
+  - generic [ref=f11e3]:
+    - banner [ref=f11e4]:
+      - generic [ref=f11e5]:
+        - generic [ref=f11e6]:
+          - link [ref=f11e7] [cursor=pointer]:
+            - /url: /
+          - button "Starter" [ref=f11e18]
+        - generic [ref=f11e22]:
+          - button "Switch to light mode" [ref=f11e23]
+          - link "GitHub" [ref=f11e26] [cursor=pointer]:
+            - /url: https://github.com/nuxt-ui-templates/starter-vue
+          - button "Open menu" [ref=f11e29]
+    - main [ref=f11e32]:
+      - generic [ref=f11e47]:
+        - generic [ref=f11e48]: Zeeq Planner
+        - generic [ref=f11e49]:
+          - generic [ref=f11e50]:
+            - generic [ref=f11e52]:
+              - toolbar [ref=f11e53]:
+                - group [ref=f11e54]:
+                  - button [ref=f11e55]
+                  - button [ref=f11e58]
+                  - button [ref=f11e61]
+                  - button [ref=f11e64]
+                - separator [ref=f11e69]
+                - group [ref=f11e70]:
+                  - button [ref=f11e71]
+                  - button [ref=f11e74]
+                  - button [ref=f11e77]
+                  - button [ref=f11e80]
+                  - button [disabled] [ref=f11e83]
+              - generic [active] [ref=f11e88]:
+                - paragraph [ref=f11e89]: Line one
+                - paragraph [ref=f11e90]: Line two
+                - paragraph [ref=f11e91]: Line three
+                - paragraph [ref=f11e92]: Line four
+                - paragraph [ref=f11e93]: Line five
+                - paragraph [ref=f11e94]: Line six
+                - paragraph [ref=f11e95]: Line seven
+                - paragraph [ref=f11e96]: Line eight
+                - paragraph [ref=f11e97]: Line nine
+                - paragraph [ref=f11e98]: Line ten
+                - paragraph [ref=f11e99]: Line eleven
+                - paragraph [ref=f11e100]: Line twelve
+            - generic [ref=f11e102]:
+              - combobox [ref=f11e103]:
+                - generic: Select a plan
+              - button "Save" [ref=f11e107]
+          - generic [ref=f11e113]:
+            - textbox "Type your message here…" [ref=f11e114]
+            - button "Send prompt" [ref=f11e115]
+    - separator [ref=f11e33]
+    - contentinfo [ref=f11e39]:
+      - generic [ref=f11e40]:
+        - link "GitHub" [ref=f11e42] [cursor=pointer]:
+          - /url: https://github.com/nuxt-ui-templates/starter-vue
+        - paragraph [ref=f11e46]: Built with Nuxt UI • © 2026
+  - region "Notifications (F8)":
+    - list

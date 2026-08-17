@@ -1,0 +1,22 @@
+- generic [ref=f19e1]:
+  - generic [ref=f19e3]:
+    - banner [ref=f19e4]:
+      - generic [ref=f19e5]:
+        - generic [ref=f19e6]:
+          - link [ref=f19e7] [cursor=pointer]:
+            - /url: /
+          - button "Starter" [ref=f19e18]
+        - generic [ref=f19e22]:
+          - button "Switch to light mode" [ref=f19e23]
+          - link "GitHub" [ref=f19e26] [cursor=pointer]:
+            - /url: https://github.com/nuxt-ui-templates/starter-vue
+          - button "Open menu" [ref=f19e29]
+    - main [ref=f19e32]
+    - separator [ref=f19e33]
+    - contentinfo [ref=f19e39]:
+      - generic [ref=f19e40]:
+        - link "GitHub" [ref=f19e42] [cursor=pointer]:
+          - /url: https://github.com/nuxt-ui-templates/starter-vue
+        - paragraph [ref=f19e46]: Built with Nuxt UI • © 2026
+  - region "Notifications (F8)":
+    - list

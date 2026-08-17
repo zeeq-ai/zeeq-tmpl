@@ -1,0 +1,50 @@
+- generic [ref=f9e1]:
+  - generic [ref=f9e3]:
+    - banner [ref=f9e4]:
+      - generic [ref=f9e5]:
+        - generic [ref=f9e6]:
+          - link [ref=f9e7] [cursor=pointer]:
+            - /url: /
+          - button "Starter" [ref=f9e18]
+        - generic [ref=f9e22]:
+          - button "Switch to light mode" [ref=f9e23]
+          - link "GitHub" [ref=f9e26] [cursor=pointer]:
+            - /url: https://github.com/nuxt-ui-templates/starter-vue
+    - main [ref=f9e29]:
+      - generic [ref=f9e44]:
+        - generic [ref=f9e45]: Zeeq Planner
+        - generic [ref=f9e46]:
+          - generic [ref=f9e47]:
+            - generic [ref=f9e49]:
+              - toolbar [ref=f9e50]:
+                - group [ref=f9e51]:
+                  - button [ref=f9e52]
+                  - button [disabled] [ref=f9e55]
+                  - button [ref=f9e58]
+                  - button [ref=f9e61]
+                - separator [ref=f9e66]
+                - group [ref=f9e67]:
+                  - button [ref=f9e68]
+                  - button [ref=f9e71]
+                  - button [ref=f9e74]
+                  - button [ref=f9e77]
+                  - button [disabled] [ref=f9e80]
+              - generic [ref=f9e85]:
+                - heading "Zeeq Plan Reload Verification" [level=1] [ref=f9e113]
+                - paragraph [ref=f9e86]: This session confirms that selecting a saved plan from the dropdown reloads its content into the editor.
+                - paragraph [ref=f9e114]
+            - generic [ref=f9e88]:
+              - combobox [active] [ref=f9e89]:
+                - generic: Zeeq Plan Reload Verification
+              - button "Save" [ref=f9e93]
+          - generic [ref=f9e99]:
+            - textbox "Type your message here…" [ref=f9e100]
+            - button "Send prompt" [ref=f9e101]
+    - separator [ref=f9e30]
+    - contentinfo [ref=f9e36]:
+      - generic [ref=f9e37]:
+        - link "GitHub" [ref=f9e39] [cursor=pointer]:
+          - /url: https://github.com/nuxt-ui-templates/starter-vue
+        - paragraph [ref=f9e43]: Built with Nuxt UI • © 2026
+  - region "Notifications (F8)":
+    - list

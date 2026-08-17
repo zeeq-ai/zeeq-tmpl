@@ -1,0 +1,48 @@
+- generic [ref=f13e1]:
+  - generic [ref=f13e3]:
+    - banner [ref=f13e4]:
+      - generic [ref=f13e5]:
+        - generic [ref=f13e6]:
+          - link [ref=f13e7] [cursor=pointer]:
+            - /url: /
+          - button "Starter" [ref=f13e18]
+        - generic [ref=f13e22]:
+          - button "Switch to light mode" [ref=f13e23]
+          - link "GitHub" [ref=f13e26] [cursor=pointer]:
+            - /url: https://github.com/nuxt-ui-templates/starter-vue
+          - button "Open menu" [ref=f13e29]
+    - main [ref=f13e32]:
+      - generic [ref=f13e47]:
+        - generic [ref=f13e48]: Zeeq Planner
+        - generic [ref=f13e49]:
+          - generic [ref=f13e50]:
+            - generic [ref=f13e52]:
+              - toolbar [ref=f13e53]:
+                - group [ref=f13e54]:
+                  - button [ref=f13e55]
+                  - button [ref=f13e58]
+                  - button [ref=f13e61]
+                  - button [ref=f13e64]
+                - separator [ref=f13e69]
+                - group [ref=f13e70]:
+                  - button [ref=f13e71]
+                  - button [ref=f13e74]
+                  - button [ref=f13e77]
+                  - button [ref=f13e80]
+                  - button [disabled] [ref=f13e83]
+              - paragraph [ref=f13e89]: Start planning...
+            - generic [ref=f13e91]:
+              - combobox [ref=f13e92]:
+                - generic: Select a plan
+              - button "Save" [ref=f13e96]
+          - generic [ref=f13e102]:
+            - textbox "Type your message here…" [ref=f13e103]
+            - button "Send prompt" [ref=f13e104]
+    - separator [ref=f13e33]
+    - contentinfo [ref=f13e39]:
+      - generic [ref=f13e40]:
+        - link "GitHub" [ref=f13e42] [cursor=pointer]:
+          - /url: https://github.com/nuxt-ui-templates/starter-vue
+        - paragraph [ref=f13e46]: Built with Nuxt UI • © 2026
+  - region "Notifications (F8)":
+    - list

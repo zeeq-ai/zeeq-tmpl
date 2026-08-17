@@ -8,3 +8,8 @@ See the blog posts here:
 - <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-2/>
 - <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-3/>
 - <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-4/>
+- <https://chrlschn.dev/blog/2026/08/the-unexpected-ai-stack-csharp-dotnet-part-5/>
+
+---
+
+**Be sure to see the branches**! `main` is the base; branches and PRs show the progressive layering.

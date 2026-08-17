@@ -1,0 +1,64 @@
+- generic:
+  - generic:
+    - generic:
+      - banner:
+        - generic:
+          - generic:
+            - link:
+              - /url: /
+            - button:
+              - generic: Starter
+          - generic:
+            - button
+            - link:
+              - /url: https://github.com/nuxt-ui-templates/starter-vue
+      - main:
+        - generic:
+          - generic: Zeeq Planner
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - toolbar:
+                    - group:
+                      - button
+                      - button
+                      - button
+                      - button
+                    - separator
+                    - group:
+                      - button
+                      - button
+                      - button
+                      - button
+                      - button [disabled]
+                  - generic:
+                    - paragraph: "# Zeeq Plan Reload Verification"
+                    - paragraph
+                    - paragraph: This session confirms that selecting a saved plan from the dropdown reloads its content into the editor.
+                    - paragraph
+              - generic:
+                - generic:
+                  - combobox [expanded]:
+                    - generic: Zeeq Plan Reload Verification
+                  - button:
+                    - generic: Save
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox:
+                      - /placeholder: Type your message here…
+                    - button
+      - separator
+      - contentinfo:
+        - generic:
+          - generic:
+            - link:
+              - /url: https://github.com/nuxt-ui-templates/starter-vue
+          - generic:
+            - paragraph: Built with Nuxt UI • © 2026
+  - listbox [ref=f3e108]:
+    - group [ref=f3e109]:
+      - option "Zeeq Plan Reload Verification" [active] [selected] [ref=f3e110]
+      - option "Zeeq Session Wipe Support" [ref=f3e116]

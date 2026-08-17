@@ -1,0 +1,50 @@
+- generic [ref=f3e1]:
+  - generic [ref=f3e3]:
+    - banner [ref=f3e4]:
+      - generic [ref=f3e5]:
+        - generic [ref=f3e6]:
+          - link [ref=f3e7] [cursor=pointer]:
+            - /url: /
+          - button "Starter" [ref=f3e18]
+        - generic [ref=f3e22]:
+          - button "Switch to light mode" [ref=f3e23]
+          - link "GitHub" [ref=f3e26] [cursor=pointer]:
+            - /url: https://github.com/nuxt-ui-templates/starter-vue
+    - main [ref=f3e29]:
+      - generic [ref=f3e44]:
+        - generic [ref=f3e45]: Zeeq Planner
+        - generic [ref=f3e46]:
+          - generic [ref=f3e47]:
+            - generic [ref=f3e49]:
+              - toolbar [ref=f3e50]:
+                - group [ref=f3e51]:
+                  - button [ref=f3e52]
+                  - button [ref=f3e55]
+                  - button [ref=f3e58]
+                  - button [ref=f3e61]
+                - separator [ref=f3e66]
+                - group [ref=f3e67]:
+                  - button [ref=f3e68]
+                  - button [ref=f3e71]
+                  - button [ref=f3e74]
+                  - button [ref=f3e77]
+                  - button [disabled] [ref=f3e80]
+              - generic [ref=f3e85]:
+                - heading "Zeeq Session Wipe Support" [level=1] [ref=f3e119]
+                - paragraph [ref=f3e104]: This session defines the plan for allowing users to clear the text content of a saved session prompt without deleting the prompt entry itself.
+                - paragraph [ref=f3e105]
+            - generic [ref=f3e88]:
+              - combobox [active] [ref=f3e89]:
+                - generic: Zeeq Session Wipe Support
+              - button "Save" [ref=f3e93]
+          - generic [ref=f3e99]:
+            - textbox "Type your message here…" [ref=f3e100]
+            - button "Send prompt" [ref=f3e101]
+    - separator [ref=f3e30]
+    - contentinfo [ref=f3e36]:
+      - generic [ref=f3e37]:
+        - link "GitHub" [ref=f3e39] [cursor=pointer]:
+          - /url: https://github.com/nuxt-ui-templates/starter-vue
+        - paragraph [ref=f3e43]: Built with Nuxt UI • © 2026
+  - region "Notifications (F8)":
+    - list
