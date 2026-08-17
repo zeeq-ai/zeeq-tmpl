@@ -482,3 +482,8 @@ $RECYCLE.BIN/
 *.swp
 
 **/generated/**
+
+**/.playwright-mcp/**
+
+.agents/logs/**
+.TestResults/**
