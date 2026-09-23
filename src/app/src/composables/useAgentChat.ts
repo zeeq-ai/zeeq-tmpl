@@ -26,7 +26,6 @@ export function useAgentChat() {
 
   let readyTimeout: ReturnType<typeof setTimeout> | undefined
   let assistantMessage: ChatMessage | undefined
-  let responseStreamStarted = false
 
   function scheduleReady() {
     clearTimeout(readyTimeout)
@@ -71,19 +70,18 @@ export function useAgentChat() {
     status.value = 'submitted'
     assistantMessage = undefined
 
-    if (!responseStreamStarted) {
-      responseStreamStarted = true
-      consumeResponseStream().catch(() => {
-        status.value = 'error'
-      })
-    }
-
     try {
       await postSendPrompt({ query: { prompt: trimmed } })
     } catch {
       status.value = 'error'
     }
   }
+
+  // 👇 Open the response stream immediately so agent output triggered outside of
+  // chat (e.g. a specification diff research run) still lands in the UI.
+  consumeResponseStream().catch(() => {
+    status.value = 'error'
+  })
 
   return { messages, status, sendPrompt }
 }

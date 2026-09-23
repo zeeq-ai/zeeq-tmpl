@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Threading.Channels;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
@@ -96,6 +97,15 @@ builder
     .UseOtlpExporter();
 
 var app = builder.Build();
+
+// Skip when running under the build-time OpenAPI doc generator, which executes this
+// file up to this point without Aspire having injected a real connection string.
+if (Assembly.GetEntryAssembly()?.GetName().Name != "GetDocument.Insider")
+{
+    using var scope = app.Services.CreateScope();
+    var dbContext = scope.ServiceProvider.GetRequiredService<ZeeqContext>();
+    dbContext.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {

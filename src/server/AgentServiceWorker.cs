@@ -1,6 +1,7 @@
 using System.Threading.Channels;
 using GitHub.Copilot;
 using Microsoft.Extensions.Options;
+using ILogger = Serilog.ILogger;
 
 namespace Zeeq.Tmpl;
 
@@ -10,8 +11,7 @@ public class AgentServiceWorker(
     [FromKeyedServices("outbound")] Channel<string> outboundChannel
 ) : BackgroundService
 {
-    // 👇 Change this to match some location on your disk
-    private const string WorkingDirectory = "/Users/cchen/code/zeeq/zeeq-app";
+    private static readonly ILogger Log = Serilog.Log.ForContext<AgentServiceWorker>();
     private CopilotClient? _client;
     private CopilotSession? _session;
 
@@ -20,9 +20,14 @@ public class AgentServiceWorker(
     /// </summary>
     public override async Task StartAsync(CancellationToken cancellationToken)
     {
+        var currentAppDirectory = Environment.CurrentDirectory;
+        var rootDirectory = Directory.GetParent(currentAppDirectory)?.Parent?.FullName ?? currentAppDirectory;
+
+        Log.Here().Information("Using working directory: {RootDirectory}", rootDirectory);        
+
         // See: https://github.com/github/copilot-sdk/blob/main/docs/auth/byok.md
         // See: https://github.com/github/awesome-copilot/blob/main/cookbook/copilot-sdk/dotnet/recipe/managing-local-files.cs
-        _client = new CopilotClient(new() { WorkingDirectory = WorkingDirectory });
+        _client = new CopilotClient(new() { WorkingDirectory = rootDirectory });
         _session = await _client.CreateSessionAsync(
             new()
             {
