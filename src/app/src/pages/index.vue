@@ -134,7 +134,7 @@ function onSubmit() {
   sendPrompt(prompt)
 }
 
-const { content: planContent, plans, selectedPlanId, save } = usePlanEditor()
+const { content: planContent, plans, selectedPlanId, selectedPlanName, save } = usePlanEditor()
 
 const isNameModalOpen = ref(false)
 const specNameInput = ref('')
@@ -165,7 +165,7 @@ watch(isNameModalOpen, (open) => {
 })
 
 async function onSaveClick() {
-  const name = extractTitle(planContent.value) ?? await promptSpecName()
+  const name = extractTitle(planContent.value) ?? selectedPlanName.value ?? await promptSpecName()
   if (!name) return
   save(name)
 }

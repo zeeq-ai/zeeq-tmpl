@@ -6,3 +6,9 @@ dotnet = "10.0.302"
 "dotnet:dotnet-ef" = "10.0.12"
 node = "26"
 pnpm = "11.18.0"
+
+[env]
+# The Aspire dashboard's OTLP receiver only listens for gRPC by default. The
+# Copilot SDK's telemetry exporter speaks OTLP/HTTP only, so it needs this
+# separate HTTP listener enabled to export gen.ai traces to the dashboard.
+DOTNET_DASHBOARD_OTLP_HTTP_ENDPOINT_URL = "http://localhost:4318"

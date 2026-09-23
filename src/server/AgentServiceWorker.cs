@@ -27,7 +27,24 @@ public class AgentServiceWorker(
 
         // See: https://github.com/github/copilot-sdk/blob/main/docs/auth/byok.md
         // See: https://github.com/github/awesome-copilot/blob/main/cookbook/copilot-sdk/dotnet/recipe/managing-local-files.cs
-        _client = new CopilotClient(new() { WorkingDirectory = rootDirectory });
+        // See: https://github.com/github/copilot-sdk/blob/main/docs/observability/opentelemetry.md
+        _client = new CopilotClient(
+            new()
+            {
+                WorkingDirectory = rootDirectory,
+                Telemetry = new()
+                {
+                    // The app's own telemetry (Program.cs's UseOtlpExporter()) exports to the
+                    // Aspire dashboard's gRPC OTLP endpoint (OTEL_EXPORTER_OTLP_ENDPOINT), but
+                    // the Copilot CLI's exporter only speaks OTLP/HTTP, so it needs the
+                    // dashboard's separate HTTP listener instead (see .config/mise.toml).
+                    OtlpEndpoint = Environment.GetEnvironmentVariable(
+                        "DOTNET_DASHBOARD_OTLP_HTTP_ENDPOINT_URL"
+                    ),
+                    OtlpProtocol = "http/protobuf",
+                },
+            }
+        );
         _session = await _client.CreateSessionAsync(
             new()
             {

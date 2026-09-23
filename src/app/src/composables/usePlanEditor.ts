@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { SelectItem } from '@nuxt/ui'
 import { createPatch } from 'diff'
 import { getSpecifications } from '../api/generated/clients/getSpecifications'
@@ -37,6 +37,10 @@ export function usePlanEditor() {
     if (spec) content.value = spec.content
   })
 
+  const selectedPlanName = computed(
+    () => specifications.value.find(s => s.id === selectedPlanId.value)?.name,
+  )
+
   async function save(name: string) {
     const previousContent = specifications.value.find(s => s.id === selectedPlanId.value)?.content ?? ''
     const newContent = content.value
@@ -60,5 +64,5 @@ export function usePlanEditor() {
 
   refreshPlans()
 
-  return { content, plans, selectedPlanId, save }
+  return { content, plans, selectedPlanId, selectedPlanName, save }
 }

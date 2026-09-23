@@ -44,6 +44,8 @@ aspire describe postgres --apphost ./host --format json | \
 }'
 ```
 
+**Prefer restarting only the resource, not the full Aspire stack**
+
 ### Playwright MCP
 
 Use the Playwright MCP to run the app in a browser and test the UI.
