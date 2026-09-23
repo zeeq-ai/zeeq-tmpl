@@ -480,3 +480,10 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+**/generated/**
+
+**/.playwright-mcp/**
+
+.agents/logs/**
+.TestResults/**

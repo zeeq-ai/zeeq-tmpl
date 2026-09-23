@@ -32,3 +32,7 @@ See the blog posts here:
 ---
 
 **Be sure to see the branches**! `main` is the base; branches and PRs show the progressive layering.
+
+## Tooling
+
+This repo uses [mise](https://mise.jdx.dev/) (`.config/mise.toml`) to manage the .NET SDK and CLI tools (Aspire CLI, CSharpRepl, Csharpier, dotnet-ef). If you have the .NET SDK but not mise, a `.config/dotnet-tools.json` manifest with the same tools is provided as a fallback — run `dotnet tool restore` from the repo root to install them.

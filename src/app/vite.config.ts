@@ -11,6 +11,7 @@ export default defineConfig({
     }),
     vue(),
     ui({
+      prose: true,
       ui: {
         colors: {
           primary: 'green',

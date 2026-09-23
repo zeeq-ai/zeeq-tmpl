@@ -1,6 +1,6 @@
 [mcp_servers.nuxt-ui-remote]
 enabled = true
-url = https://ui.nuxt.com/mcp"
+url = "https://ui.nuxt.com/mcp"
 
 [mcp_servers.playwright]
 command = "npx"

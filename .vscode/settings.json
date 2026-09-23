@@ -1,4 +1,10 @@
 {
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": null,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false
+  },
   "mise.configureExtensionsAutomatically": true,
   "mise.configureExtensionsUseSymLinks": true,
   "dotnetAcquisitionExtension.sharedExistingDotnetPath": "${workspaceFolder}/.vscode/mise-tools/dotnet",
