@@ -3,3 +3,48 @@ allowBuilds:
   es5-ext: false
   esbuild: false
   vue-demi: false
+
+overrides:
+  fast-uri@^3.0.0: 3.1.8
+  nanoid@^3.3.0: 3.3.19
+  postcss@^8.0.0: 8.5.28
+  brace-expansion@^5.0.0: 5.0.12
+  esbuild: 0.28.2
+  '@tiptap/core': 3.31.3
+  '@tiptap/extensions': 3.31.3
+  '@tiptap/markdown': 3.31.3
+  '@tiptap/pm': 3.31.3
+  '@tiptap/starter-kit': 3.31.3
+  '@tiptap/suggestion': 3.31.3
+  '@tiptap/vue-3': 3.31.3
+  '@tiptap/extension-blockquote': 3.31.3
+  '@tiptap/extension-bold': 3.31.3
+  '@tiptap/extension-bubble-menu': 3.31.3
+  '@tiptap/extension-bullet-list': 3.31.3
+  '@tiptap/extension-code': 3.31.3
+  '@tiptap/extension-code-block': 3.31.3
+  '@tiptap/extension-collaboration': 3.31.3
+  '@tiptap/extension-document': 3.31.3
+  '@tiptap/extension-drag-handle': 3.31.3
+  '@tiptap/extension-drag-handle-vue-3': 3.31.3
+  '@tiptap/extension-dropcursor': 3.31.3
+  '@tiptap/extension-floating-menu': 3.31.3
+  '@tiptap/extension-gapcursor': 3.31.3
+  '@tiptap/extension-hard-break': 3.31.3
+  '@tiptap/extension-heading': 3.31.3
+  '@tiptap/extension-horizontal-rule': 3.31.3
+  '@tiptap/extension-image': 3.31.3
+  '@tiptap/extension-italic': 3.31.3
+  '@tiptap/extension-link': 3.31.3
+  '@tiptap/extension-list': 3.31.3
+  '@tiptap/extension-list-item': 3.31.3
+  '@tiptap/extension-list-keymap': 3.31.3
+  '@tiptap/extension-mention': 3.31.3
+  '@tiptap/extension-node-range': 3.31.3
+  '@tiptap/extension-ordered-list': 3.31.3
+  '@tiptap/extension-paragraph': 3.31.3
+  '@tiptap/extension-placeholder': 3.31.3
+  '@tiptap/extension-strike': 3.31.3
+  '@tiptap/extension-text': 3.31.3
+  '@tiptap/extension-underline': 3.31.3
+
