@@ -44,5 +44,5 @@ This repo uses [mise](https://mise.jdx.dev/) (`.config/mise.toml`) to manage the
 
 You'll need to set a secret to run the application:
 
-1. Update the `AgentServiceWorker.cs` to set your LLM API endpoint
-2. Run `dotnet user-secrets set AppSettings:LlmApiKey "YOUR_API_KEY_HERE"`
+1. Update `AppSettings:LlmBaseUrl` in `src/server/appsettings.json` to set your LLM API endpoint
+2. Run `dotnet user-secrets set AppSettings:LlmApiKey "YOUR_API_KEY_HERE"` from `src/server`

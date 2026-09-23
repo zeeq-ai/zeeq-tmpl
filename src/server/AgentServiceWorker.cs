@@ -36,7 +36,7 @@ public class AgentServiceWorker(
                 Provider = new()
                 {
                     Type = "azure",
-                    BaseUrl = "https://zeeq-open-ai.openai.azure.com", // 👈 This is an Azure OpenAI endpoint
+                    BaseUrl = options.Value.LlmBaseUrl, // 👈 This is an Azure OpenAI endpoint
                     WireApi = "responses",
                     ApiKey = options.Value.LlmApiKey,
                 },
