@@ -89,15 +89,20 @@ public class SpecificationTests(PgDatabaseFixture pg) : PgTransactionalTestBase(
     [Test]
     public async Task SpecificationDiffHandler_Handle_WritesDiffToInboundChannel()
     {
-        var channel = Channel.CreateUnbounded<string>();
-        var handler = new SpecificationDiffHandler(channel);
+        var inbound = Channel.CreateUnbounded<string>();
+        var outbound = Channel.CreateUnbounded<string>();
+        var handler = new SpecificationDiffHandler(inbound, outbound);
         var id = Guid.NewGuid();
 
         var written = handler.Handle(id, "- old line\n+ new line");
 
         await Assert.That(written).IsTrue();
-        await Assert.That(channel.Reader.TryRead(out var message)).IsTrue();
+        await Assert.That(inbound.Reader.TryRead(out var message)).IsTrue();
         await Assert.That(message).Contains(id.ToString());
         await Assert.That(message).Contains("- old line\n+ new line");
+
+        await Assert.That(outbound.Reader.TryRead(out var envelope)).IsTrue();
+        await Assert.That(envelope).Contains("\"type\":\"diff_received\"");
+        await Assert.That(envelope).Contains(id.ToString());
     }
 }

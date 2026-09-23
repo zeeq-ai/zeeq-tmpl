@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "experimental": {
+    "mcp_timeout": 300000
+  },
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@playwright/mcp@latest",
+        "--extension"
+      ],
+      "enabled": true
+    },
+    "nuxt-ui": {
+      "type": "remote",
+      "url": "https://ui.nuxt.com/mcp",
+      "enabled": true
+    }
+  },
+  "lsp": {
+    "csharp": {
+      "command": [
+        "roslyn-language-server",
+        "--stdio",
+        "--autoLoadProjects"
+      ],
+      "extensions": [
+        ".cs"
+      ]
+    }
+  }
+}

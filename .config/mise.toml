@@ -12,3 +12,4 @@ pnpm = "11.18.0"
 # Copilot SDK's telemetry exporter speaks OTLP/HTTP only, so it needs this
 # separate HTTP listener enabled to export gen.ai traces to the dashboard.
 DOTNET_DASHBOARD_OTLP_HTTP_ENDPOINT_URL = "http://localhost:4318"
+OPENCODE_CONFIG = "{{config_root}}/.config/opencode.json"

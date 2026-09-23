@@ -80,26 +80,30 @@
       </UModal>
 
       <UCard
-        class="flex min-h-0 flex-[2] flex-col"
+        class="relative flex min-h-0 flex-[2] flex-col"
         :ui="{ body: 'flex-1 min-h-0 overflow-y-auto', footer: 'shrink-0' }"
       >
+        <UProgress
+          v-if="isWorking"
+          size="xs"
+          class="absolute inset-x-0 top-0 z-10"
+          aria-label="The agent is still working"
+        />
+
         <UChatMessages
           :messages="messages"
           :status="status"
+          should-auto-scroll
         >
+          <template #indicator>
+            <UChatShimmer
+              text="Thinking…"
+              class="text-sm"
+            />
+          </template>
+
           <template #content="{ message }">
-            <template
-              v-for="part in message.parts"
-              :key="part.id"
-            >
-              <Markdown
-                v-if="part.type === 'text'"
-                :value="part.text"
-                :plugins="[shiki()]"
-                :streaming="message.role === 'assistant' && status === 'streaming'"
-                unwrap
-              />
-            </template>
+            <ChatMessageParts :message="message" />
           </template>
         </UChatMessages>
 
@@ -119,14 +123,13 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { Markdown } from '@comark/vue'
-import shiki from '@comark/vue/plugins/shiki'
 import type { EditorToolbarItem } from '@nuxt/ui'
+import ChatMessageParts from '../components/chat/MessageParts.vue'
 import { useAgentChat } from '../composables/useAgentChat'
 import { extractTitle, usePlanEditor } from '../composables/usePlanEditor'
 
 const input = ref('')
-const { messages, status, sendPrompt } = useAgentChat()
+const { messages, status, sendPrompt, isWorking } = useAgentChat()
 
 function onSubmit() {
   const prompt = input.value

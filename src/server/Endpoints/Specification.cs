@@ -133,8 +133,10 @@ public class SpecificationSaveHandler(ZeeqContext dbContext) : IEndpointHandler
 /// Forwards a specification diff onto the agent's inbound channel, matching the
 /// pattern used by <see cref="AgentHandler"/> for chat prompts.
 /// </summary>
-public class SpecificationDiffHandler([FromKeyedServices("inbound")] Channel<string> inboundChannel)
-    : IEndpointHandler
+public class SpecificationDiffHandler(
+    [FromKeyedServices("inbound")] Channel<string> inboundChannel,
+    [FromKeyedServices("outbound")] Channel<string> outboundChannel
+) : IEndpointHandler
 {
     private static readonly Serilog.ILogger Log =
         Serilog.Log.ForContext<SpecificationDiffHandler>();
@@ -147,6 +149,18 @@ public class SpecificationDiffHandler([FromKeyedServices("inbound")] Channel<str
         );
 
         Log.Here().Information("Forwarding diff for specification {Id}", id);
+
+        // Acknowledge the diff to the UI immediately, independent of the worker.
+        outboundChannel.Writer.TryWrite(
+            System.Text.Json.JsonSerializer.Serialize(
+                new
+                {
+                    type = "diff_received",
+                    id = Guid.NewGuid(),
+                    specificationId = id,
+                }
+            )
+        );
 
         var instructionMessage = $"""
             The following is a diff for specification {id}.
