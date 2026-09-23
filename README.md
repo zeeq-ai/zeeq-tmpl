@@ -36,3 +36,13 @@ See the blog posts here:
 ## Tooling
 
 This repo uses [mise](https://mise.jdx.dev/) (`.config/mise.toml`) to manage the .NET SDK and CLI tools (Aspire CLI, CSharpRepl, Csharpier, dotnet-ef). If you have the .NET SDK but not mise, a `.config/dotnet-tools.json` manifest with the same tools is provided as a fallback — run `dotnet tool restore` from the repo root to install them.
+
+> [!IMPORTANT]
+> On macOS, the setup of `mise install` for `dotnet` will require a reboot; otherwise, the `dotnet` command yields a `SIGKILL` until reboot and the tools fail to install.
+
+## Minimum Setup
+
+You'll need to set a secret to run the application:
+
+1. Update the `AgentServiceWorker.cs` to set your LLM API endpoint
+2. Run `dotnet user-secrets set AppSettings:LlmApiKey "YOUR_API_KEY_HERE"`
